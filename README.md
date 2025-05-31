@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Zinc Demo Storefront
 
-## Getting Started
+A single-product demo storefront showcasing Zinc's core Amazon-ordering workflow. Built with Next.js 15, TypeScript, Tailwind CSS, shadcn/ui, and Drizzle ORM.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Credential-based checkout**: Users supply Amazon email + password (+ optional TOTP key) for Prime account orders
+- **Addax checkout**: Anonymous purchases using Zinc Managed Account balance
+- **Order tracking**: Real-time status updates via webhooks and background polling
+- **Return management**: Generate return labels and track return status
+- **2FA support**: Handle Amazon account verification requirements
+- **Error handling**: Comprehensive error handling with retry mechanisms
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework**: Next.js 15 with App Router
+- **Database**: Neon Postgres with Drizzle ORM
+- **UI**: Tailwind CSS + shadcn/ui components
+- **Deployment**: Vercel with serverless functions and cron jobs
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Setup
 
-## Learn More
+1. **Clone and install dependencies:**
+   ```bash
+   npm install
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Environment setup:**
+   ```bash
+   cp .env.example .env.local
+   ```
+   
+   Fill in your environment variables:
+   - `ZINC_CLIENT_TOKEN`: Your Zinc API client token
+   - `POSTGRES_URL`: Your Neon database connection string
+   - `ZINC_WEBHOOK_SECRET`: Secret for webhook authentication
+   - `ADDAX_ENABLED`: Set to "true" if Addax is enabled for your account
+   - `CRON_SECRET`: Secret for securing cron endpoints
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Database setup:**
+   ```bash
+   npm run db:push
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. **Run development server:**
+   ```bash
+   npm run dev
+   ```
 
-## Deploy on Vercel
+## Product
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The demo showcases ordering of a single SKU:
+- **Product**: Pentel R.S.V.P. Ballpoint Pen (2-Pack)
+- **SKU**: `B002YM4WME`
+- **Price**: $4.99
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## API Endpoints
+
+### Checkout
+- `POST /api/checkout` - Place new order
+
+### Orders
+- `GET /api/orders` - List all orders
+- `GET /api/orders/[id]` - Get order details
+- `POST /api/orders/[id]/retry` - Retry order with verification code
+
+### Returns
+- `POST /api/return` - Request return for order
+
+### Webhooks
+- `POST /api/webhooks/[slug]` - Receive Zinc webhook notifications
+
+### Cron Jobs
+- `GET /api/cron/poll` - Background polling for order/return updates
+
+## Pages
+
+- `/` - Product page with checkout form
+- `/orders` - Orders dashboard
+- `/orders/[id]` - Order detail view
+
+## Database Schema
+
+The app uses three main tables:
+
+- **orders**: Store order information and Zinc responses
+- **returns**: Track return requests and labels
+- **webhook_events**: Log all webhook events for debugging
+
+## Deployment
+
+1. **Deploy to Vercel:**
+   ```bash
+   vercel deploy
+   ```
+
+2. **Set environment variables** in Vercel dashboard
+
+3. **The cron job will automatically run every 5 minutes** to poll for order updates
+
+## Error Handling
+
+The app handles common Zinc error scenarios:
+
+- `product_unavailable`: Shows out of stock message
+- `max_price_exceeded`: Prompts for price confirmation
+- `account_locked_verification_required`: Shows 2FA modal
+- `manual_review_required`: Displays review status
+
+## Testing
+
+Test both checkout modes:
+
+1. **Credentials mode**: Use valid Prime account credentials
+2. **Addax mode**: Ensure sufficient Addax balance
+
+The app includes idempotency protection and proper error handling for production use.
