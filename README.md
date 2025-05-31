@@ -52,7 +52,7 @@ A single-product demo storefront showcasing Zinc's core Amazon-ordering workflow
 The demo showcases ordering of a single SKU:
 - **Product**: Pentel R.S.V.P. Ballpoint Pen (2-Pack)
 - **SKU**: `B002YM4WME`
-- **Price**: $4.99
+- **Price**: $0.96
 
 ## API Endpoints
 

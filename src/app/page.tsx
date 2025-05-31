@@ -94,7 +94,7 @@ export default function Home() {
                 <span className="text-2xl">🖊️</span>
               </div>
               <p className="text-gray-600">2-Pack Medium Point Black Ink</p>
-              <p className="text-2xl font-bold mt-2">$0.99</p>
+              <p className="text-2xl font-bold mt-2">$0.96</p>
             </div>
           </div>
 
