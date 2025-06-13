@@ -90,14 +90,38 @@ export default function Home() {
         <Card className="p-6 space-y-6 rounded-2xl shadow-md">
           <div className="text-center space-y-4">
             <h1 className="text-3xl font-bold">Pentel R.S.V.P. Ballpoint Pen</h1>
-            <div className="bg-gray-100 rounded-lg p-8">
+            
+            
+            
+            {/* <div className="bg-gray-100 rounded-lg p-8">
+              
+              
               <div className="w-32 h-32 bg-blue-200 rounded-lg mx-auto mb-4 flex items-center justify-center">
                 <span className="text-2xl">🖊️</span>
               </div>
               <p className="text-gray-600">2-Pack Medium Point Black Ink</p>
               <Link className="text-blue-500 underline" href={"https://www.amazon.com/Pentel-R-S-V-P-Ballpoint-Black-BK90BP2A/dp/B002YM4WME?dib=eyJ2IjoiMSJ9.ZKb5ZcAmhfzAqWLnCmUnDDNwttXhgDe-TPpXfXBq-0I9doLxu7yoCNAfhaeqRqykftUwUs3vlaxcWASDvNuUlS1tTGRzFrbyjhnQ392jXWf_09bpwGQ9p62RF2u9Hl8WDoM51uVFCpLfDhlxEpIqTdO0vA00IH0W_cp9ZD56BrVCrC5s3SFW0eSWY_CcFRdFUCWkqEo4ML1xd4rbZpndgkt6nJ5aXx-IspqUA39_BNkMzUIEV8rYyfwUQpQudbeMhiYyZ0az4OsgmTWDuRLyZYajFoNDDKpXEdr3LIW0ku4.3BkOwR0bWtRWfiL-OfgwQli26cTWgC6l1yLLmI1ye3Y&dib_tag=se&keywords=items%2Bunder%2B%241&qid=1748451569&sr=8-6&th=1"}>Link to product</Link>
               <p className="text-2xl font-bold mt-2">$0.96</p>
+            </div> */}
+
+
+            <div className="bg-gray-100 rounded-lg p-8">
+              <div className="w-32 h-32 bg-blue-200 rounded-lg mx-auto mb-4 flex items-center justify-center overflow-hidden">
+                <img
+                  src="https://m.media-amazon.com/images/I/71KxNKniFoL._AC_SY879_.jpg"
+                  alt="Pentel R.S.V.P. Ballpoint Pen"
+                  className="object-contain w-full h-full"
+                />
+              </div>
+              <p className="text-gray-600">2-Pack Medium Point Black Ink</p>
+              <Link className="text-blue-500 underline" href={"https://www.amazon.com/Pentel-R-S-V-P-Ballpoint-Black-BK90BP2A/dp/B002YM4WME?dib=eyJ2IjoiMSJ9.ZKb5ZcAmhfzAqWLnCmUnDDNwttXhgDe-TPpXfXBq-0I9doLxu7yoCNAfhaeqRqykftUwUs3vlaxcWASDvNuUlS1tTGRzFrbyjhnQ392jXWf_09bpwGQ9p62RF2u9Hl8WDoM51uVFCpLfDhlxEpIqTdO0vA00IH0W_cp9ZD56BrVCrC5s3SFW0eSWY_CcFRdFUCWkqEo4ML1xd4rbZpndgkt6nJ5aXx-IspqUA39_BNkMzUIEV8rYyfwUQpQudbeMhiYyZ0az4OsgmTWDuRLyZYajFoNDDKpXEdr3LIW0ku4.3BkOwR0bWtRWfiL-OfgwQli26cTWgC6l1yLLmI1ye3Y&dib_tag=se&keywords=items%2Bunder%2B%241&qid=1748451569&sr=8-6&th=1"}>Link to product</Link>
+              <p className="text-2xl font-bold mt-2">$0.96</p>
             </div>
+
+
+
+
+
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
