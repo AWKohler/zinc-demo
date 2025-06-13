@@ -10,10 +10,10 @@ export async function POST(
   { params }: { params: Promise<{ slug: string }> }
 ) {
   try {
-    const secret = req.nextUrl.searchParams.get("secret");
-    if (secret !== process.env.ZINC_WEBHOOK_SECRET) {
-      return new Response("Unauthorized", { status: 401 });
-    }
+    // const secret = req.nextUrl.searchParams.get("secret");
+    // if (secret !== process.env.ZINC_WEBHOOK_SECRET) {
+    //   return new Response("Unauthorized", { status: 401 });
+    // }
 
     const { slug } = await params;
     const payload = await req.json();

@@ -11,5 +11,7 @@ export function getWebhookUrl(endpoint: string): string {
     ? 'http://localhost:3000'
     : 'https://your-domain.com';
     
-  return `${baseUrl}/api/webhooks/${endpoint}?secret=${process.env.ZINC_WEBHOOK_SECRET}`;
+  // return `${baseUrl}/api/webhooks/${endpoint}?secret=${process.env.ZINC_WEBHOOK_SECRET}`;
+  return `${baseUrl}/api/webhooks/${endpoint}`;
+
 }
