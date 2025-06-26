@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 
 export default function Home() {
-  const [mode, setMode] = useState<"credentials" | "addax">("credentials");
+  const [mode, setMode] = useState<"credentials" | "addax">("addax");
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -100,7 +100,7 @@ export default function Home() {
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="flex gap-4">
-              <Button
+              {/* <Button
                 type="button"
                 variant={mode === "credentials" ? "default" : "outline"}
                 onClick={() => setMode("credentials")}
@@ -108,7 +108,7 @@ export default function Home() {
               >
                 <Badge variant="default" className="mr-2">Prime</Badge>
                 Use my Amazon account
-              </Button>
+              </Button> */}
               <Button
                 type="button"
                 variant={mode === "addax" ? "default" : "outline"}
