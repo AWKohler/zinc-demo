@@ -30,7 +30,7 @@ export async function GET(
         
         await db.update(orders)
           .set({
-            status: zincResponse._type === "order_response" ? "order_response" : "error",
+            status: zincResponse._type,/// === "order_response" ? "order_response" : "error",
             response: zincResponse,
             updatedAt: new Date(),
           })
@@ -38,7 +38,7 @@ export async function GET(
 
         return NextResponse.json({
           ...orderData,
-          status: zincResponse._type === "order_response" ? "order_response" : "error",
+          status: zincResponse._type,/// === "order_response" ? "order_response" : "error",
           response: zincResponse,
         });
       } catch (error) {
